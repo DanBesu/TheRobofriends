@@ -15,13 +15,10 @@ The data for this project:
   
   - full page
   - ![](presentation_images/full.png)
-  
   - search
   - ![](presentation_images/search.png)
-
   - smaller tab
   - ![](crop.png)
-
   - loading
   - ![](presentation_images/loading.png)
   
