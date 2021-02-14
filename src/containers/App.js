@@ -17,7 +17,7 @@ class App extends Component {
         // request to server
         fetch('https://jsonplaceholder.typicode.com/users')
         .then(response=>response.json())
-        .then(users => this.setState({robots: users})); // if {} => LOADING....
+        .then(users => this.setState({})); // if {} => LOADING....
     }
 
     onSearchChange = (event) =>{
@@ -33,7 +33,7 @@ class App extends Component {
         })
         
         if(!this.state.robots.length){
-            return <h1 className='tc'> Loading... </h1>
+            return <h1 className='tc'> Loading.... </h1>
         }
         else{
             return(
