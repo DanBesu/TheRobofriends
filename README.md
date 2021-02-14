@@ -19,4 +19,5 @@ The data for this project:
   - ![](presentation_images/search.png)
   - smaller tab
   - ![](crop.png)
-  
+  - loading
+  - ![](presentation_images/loading.png)
