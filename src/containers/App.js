@@ -23,11 +23,9 @@ class App extends Component {
     onSearchChange = (event) =>{
         // every time the input chances, an event happens
         this.setState({searchfield: event.target.value});
-
     }
 
     render(){
-
         const filterRobots = this.state.robots.filter(robot => {
             return robot.name.toLowerCase().includes(this.state.searchfield.toLowerCase())
         })
