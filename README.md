@@ -18,6 +18,6 @@ The data for this project:
   - search
   - ![](presentation_images/search.png)
   - smaller tab
-  - ![](crop.png)
+  - ![](presentation_images/crop.png)
   - loading
   - ![](presentation_images/loading.png)
