@@ -10,4 +10,3 @@ The data for this project:
 - https://robohash.org/ - the robot pictures
 - https://jsonplaceholder.typicode.com/users - using fetch(*link*) the app makes requests to display the fake users
 
-
