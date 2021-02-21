@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## CodeStory
+## CodeStory / Concepts
 
 This project uses basic React/JS/CSS/HTML principles to display a well ordered, responsive list of robot cards and search through it.
 
