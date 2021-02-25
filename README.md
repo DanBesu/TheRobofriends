@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Concepts
 
-This project uses basic React/JS/CSS/HTML principles to display a well ordered, responsive list of robot cards and search through it.
+This project uses React/JS/CSS/HTML principles to display a well ordered, responsive list of robot cards and search through it.
 
 The data for this project:
 - https://robohash.org/ - the robot pictures
