@@ -30,6 +30,7 @@ function App(){
             .then(users => setRobots(users)); // if {} => LOADING....
         console.log(count)
     }, [count]) // only run useEffect if the list is empty (just run initially when the component mounts)
+                // only run if count changes
 
     const onSearchChange = (event) =>{
         // every time the input chances, an event happens
