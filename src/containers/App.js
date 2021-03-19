@@ -1,64 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import './App.css';
 import Scroll from '../components/Scroll';
+import {connect} from 'react-redux';
 
-function App(){
-    // constructor(){
-    //     super()
-    //     this.state = {
-    //         robots: [],
-    //         searchfield: ''
-    //     }
-    // }
-    
-    const [robots, setRobots] = useState([]) // initial state
-    const [searchfield, setSearchField] = useState('')
-    const [count, setCount] = useState(0);
+import {setSearchField, requestRobots} from '../actions'
+import { render } from '@testing-library/react';
 
-    // componentDidMount() {
-    //     // request to server
-    //     fetch('https://jsonplaceholder.typicode.com/users')
-    //     .then(response=>response.json())
-    //     .then(users => this.setState({robots: users})); // if {} => LOADING....
-    // }
 
-    useEffect(()=>{
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response=>response.json())
-            .then(users => setRobots(users)); // if {} => LOADING....
-        console.log(count)
-    }, [count]) // only run useEffect if the list is empty (just run initially when the component mounts)
-                // only run if count changes
-
-    const onSearchChange = (event) =>{
-        // every time the input chances, an event happens
-        setSearchField(event.target.value);
+const mapStateToProps = state => {
+    return {
+        searchField: state.searchRobots.searchField,
+        robots: state.requestRobots.robots,
+        isPending: state.requestRobots.isPending,
+        error: state.requestRobots.error
     }
-
-   
-    const filterRobots = robots.filter(robot => {
-        return robot.name.toLowerCase().includes(searchfield.toLowerCase())
-    })
-    
-    if(!robots.length){
-        return <h1 className='tc'> Loading.... </h1>
-    }
-    else{
-        return(
-            <div className='tc'>
-                <h1 className='f1'>RoboFriends</h1>
-                <button onClick={()=>setCount(count+1)}>Click Me!</button>
-                <SearchBox searchChange={onSearchChange}/>
-                <Scroll>
-                    <CardList robots={filterRobots}/>
-                </Scroll>
-                
-            </div>
-        );
-    }
-    
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+    return { 
+        onSearchChange: (event) =>  dispatch(setSearchField(event.target.value)),
+        onRequestRobots: () => dispatch(requestRobots())
+    }
+}
+
+class App extends Component{
+
+    componentDidMount() {
+        this.props.onRequestRobots();
+    }
+
+    render(){
+
+        const {searchField, onSearchChange, robots, isPending} = this.props;
+        const filteredRobots =  robots.filter(robot => {
+            return robot.name.toLowerCase().includes(searchField.toLowerCase())
+        })
+        return isPending ?
+            <h1>Loading</h1> :
+            (
+                <div className='tc'>
+                    <h1 className='f1'>RoboFriends</h1>
+                
+                    <SearchBox searchChange={onSearchChange}/>
+                    <Scroll>
+                        <CardList robots={filteredRobots}/>
+                    </Scroll>
+                </div>
+            );
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

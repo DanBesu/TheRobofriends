@@ -17,7 +17,6 @@ const CardList = ({robots}) => {
                 );
                 
             })
-
         }
      </div>
     );
